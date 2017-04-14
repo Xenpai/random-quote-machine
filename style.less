@@ -1,0 +1,46 @@
+// out: ./style.css, sourcemap: true, compress: false
+//main: ./style.less
+
+@unicolor: #e74c3c;
+body {
+    background-color: @unicolor;
+    font-family: "Raleway",sans-serif;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flex-item {
+    flex: 1;
+}
+.quote-machine {
+    max-height: 900px;
+    max-width: 500px;
+    background-color: #ffffff;
+    position: relative;
+    border-radius: 4px;
+    margin-top: 100px;
+}
+.new-quote {
+    width: 100px;
+    height: 40px;
+    background-color: @unicolor;
+    color: #FFF;
+    border-radius: 10px;
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.quote {
+    font-size: 20px;
+    margin: 50px;
+    margin-bottom: 100px;
+}
+.quoter {
+    right: 30px;
+    margin-right: 40px;
+    text-align: right;
+
+}
