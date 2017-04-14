@@ -4,6 +4,8 @@
 // Getting the JSON file
 let myReq = new XMLHttpRequest();
 myReq.open( "GET", "https://raw.githubusercontent.com/Xenpai/random-quote-machine/master/quotes.json" );
+
+// Actually working on the quote machine this time.
 myReq.onload = function() {
     let myData = JSON.parse( myReq.responseText ),
         quoteBox = document.querySelector( ".quote" ),
@@ -20,12 +22,16 @@ myReq.onload = function() {
     let quote = myData[ Math.floor( ( Math.random() * myData.length ) + 1 ) ].quote;
     let person = 'From "' + myData[ Math.floor( ( Math.random() * myData.length ) + 1 ) ].from + '"';
 
-
+    // Clicking the button grabs a new quote.
     quoteButton.addEventListener( "click", () => {
         let rColor = colors[ Math.floor( ( Math.random() * colors.length ) + 1 ) ],
             rng = Math.floor( ( Math.random() * myData.length ) + 1 );
         quoteBox.innerHTML = myData[ rng ].quote;
         qPerson.innerHTML = 'From "' + myData[ rng ].from + '"';
+        //Tweeting the quote.
+        let tweetButton = document.querySelector( ".twitter-share-button" );
+        tweetButton.setAttribute( "href", 'https://twitter.com/intent/tweet?hashtags=quotes&text=' + '"' + quoteBox.innerHTML + '"' );
+        //change text & background color when grabbing a new quote.
         textColor.forEach( ( item ) => {
             item.style.color = rColor;
         } );
@@ -34,8 +40,5 @@ myReq.onload = function() {
         } );
     } );
 };
+
 myReq.send();
-
-// End of getting the JSON file
-
-// Actually working on the quote machine this time.
