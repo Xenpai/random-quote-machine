@@ -12,7 +12,7 @@ myReq.onload = function() {
         colors = [
             "#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e", "#16a085", "#27ae60", "#2980b9", "#8e44ad", "#2c3e50", "#f1c40f", "#e67e22", "#e74c3c", "#95a5a6", "#f39c12", "#d35400", "#c0392b", "#bdc3c7", "#7f8c8d"
         ],
-        rColor = colors[ Math.floor( ( Math.random() * colors.length ) + 1 ) ],
+
         textColor = document.querySelectorAll( ".textcolor" ),
         bgColor = document.querySelectorAll( ".bgcolor" );
 
@@ -22,12 +22,16 @@ myReq.onload = function() {
 
 
     quoteButton.addEventListener( "click", () => {
-        quoteBox.innerHTML = quote;
-        qPerson.innerHTML = person;
-        for ( let i = 0; i < 2; i++ ) {
-            textColor[ i ].style.color = rColor;
-            bgColor[ i ].style.backgroundColor = rColor;
-        }
+        let rColor = colors[ Math.floor( ( Math.random() * colors.length ) + 1 ) ],
+            rng = Math.floor( ( Math.random() * myData.length ) + 1 );
+        quoteBox.innerHTML = myData[ rng ].quote;
+        qPerson.innerHTML = 'From "' + myData[ rng ].from + '"';
+        textColor.forEach( ( item ) => {
+            item.style.color = rColor;
+        } );
+        bgColor.forEach( ( item ) => {
+            item.style.backgroundColor = rColor;
+        } );
     } );
 };
 myReq.send();
